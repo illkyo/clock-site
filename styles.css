@@ -1,0 +1,136 @@
+:root {
+  --black: black;
+  --white: white;
+}
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.clock-outer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  height: 600px;
+  width: 600px;
+  border: 8px var(--black) solid;
+  border-radius: 50%;
+}
+
+.number-row {
+  display: flex;
+  justify-content: center;
+}
+
+.first-row,
+.last-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-row,
+.top-row {
+  display: flex;
+  gap: 300px;
+}
+
+.row-3 {
+  gap: 525px;
+}
+
+.row-2,
+.row-4 {
+  gap: 475px;
+}
+
+.number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dot {
+  height:20px;
+  width: 20px;
+  background-color: var(--black);
+  border-radius: 50%;
+}
+
+.hour-hand,
+.minute-hand {
+  position: absolute;
+  transform-origin: top center;
+  top: 50%;
+  left: 50%;
+  height: 200px;
+  width: 6px;
+  background-color: var(--black);
+  border-radius: 30% 30% 100% 100%;
+}
+
+.minute-hand {
+  transform: rotate(50deg);
+  height: 250px;
+}
+
+.hour-1 {
+  transform: rotate(220deg);
+}
+
+.hour-2 {
+  transform: rotate(250deg);
+}
+
+.hour-3 {
+  transform: rotate(272deg);
+}
+
+.hour-4 {
+  transform: rotate(294deg);
+}
+
+.hour-5 {
+  transform: rotate(324deg);
+}
+
+.hour-6 {
+  transform: rotate(1deg);
+}
+
+.hour-7 {
+  transform: rotate(39deg);
+}
+
+.hour-8 {
+  transform: rotate(64deg);
+}
+
+.hour-9 {
+  transform: rotate(88deg);
+}
+
+.hour-10 {
+  transform: rotate(112deg);
+}
+
+.hour-11 {
+  transform: rotate(139deg);
+}
+
+.hour-12,
+.hour-0 {
+  transform: rotate(179deg);
+}
+
+.btn-container {
+  display: flex;
+  gap: 50px;
+}
