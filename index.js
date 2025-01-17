@@ -13,8 +13,9 @@ function updateClock(hour) {
 updateClock(new Date().getHours());
 
 let intervalId = setInterval(() => {
+  console.log('1 Hour Passed. Updating Clock');
   updateClock(new Date().getHours());
-}, (3.6 * (10**6)));
+}, 3600000);
 
 clockBtn.addEventListener('click', () => {
   if(!stopped) {
@@ -24,7 +25,6 @@ clockBtn.addEventListener('click', () => {
     updateClock(new Date().getHours());
     setInterval(() => {
       updateClock(new Date().getHours());
-    }, (3.6 * (10**6)));
+    }, 3600000);
   }
 });
-
