@@ -17,51 +17,34 @@ h1 {
 .clock-outer {
   position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 45px;
+  justify-content: center;
+  align-items: center;
   height: 600px;
   width: 600px;
-  border: 8px var(--black) solid;
+  border: 6px var(--black) solid;
   border-radius: 50%;
+  transform: rotate(-90deg);
 }
 
-.number-row {
+.item {
+  position: absolute;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-}
-
-.first-row,
-.last-row {
-  display: flex;
-  flex-direction: column;
-}
-
-.bottom-row,
-.top-row {
-  display: flex;
-  gap: 300px;
-}
-
-.row-3 {
-  gap: 525px;
-}
-
-.row-2,
-.row-4 {
-  gap: 475px;
-}
-
-.number {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 8px;
 }
 
-.dot {
-  height:20px;
-  width: 20px;
+.line {
+  height:10px;
+  width: 2px;
   background-color: var(--black);
-  border-radius: 50%;
+}
+
+.number-line {
+  height:30px;
+  width: 4px;
+  background-color: var(--black);
 }
 
 .hour-hand,
@@ -80,7 +63,7 @@ h1 {
   transform: rotate(50deg);
   height: 250px;
 }
-
+/* 
 .hour-1 {
   transform: rotate(220deg);
 }
@@ -128,7 +111,7 @@ h1 {
 .hour-12,
 .hour-0 {
   transform: rotate(179deg);
-}
+} */
 
 .btn-container {
   display: flex;
