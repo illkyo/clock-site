@@ -48,9 +48,11 @@ h1 {
 }
 
 .hour-hand,
-.minute-hand {
+.minute-hand,
+.seconds-hand {
   position: absolute;
   transform-origin: top center;
+  /* transition: all 1s; */
   top: 50%;
   left: 50%;
   height: 200px;
@@ -60,60 +62,16 @@ h1 {
 }
 
 .minute-hand {
-  transform: rotate(50deg);
   height: 250px;
 }
-/* 
-.hour-1 {
-  transform: rotate(220deg);
-}
 
-.hour-2 {
-  transform: rotate(250deg);
+.seconds-hand {
+  height: 260px;
+  width: 2px;
+  background-color: orangered;
 }
-
-.hour-3 {
-  transform: rotate(272deg);
-}
-
-.hour-4 {
-  transform: rotate(294deg);
-}
-
-.hour-5 {
-  transform: rotate(324deg);
-}
-
-.hour-6 {
-  transform: rotate(1deg);
-}
-
-.hour-7 {
-  transform: rotate(39deg);
-}
-
-.hour-8 {
-  transform: rotate(64deg);
-}
-
-.hour-9 {
-  transform: rotate(88deg);
-}
-
-.hour-10 {
-  transform: rotate(112deg);
-}
-
-.hour-11 {
-  transform: rotate(139deg);
-}
-
-.hour-12,
-.hour-0 {
-  transform: rotate(179deg);
-} */
 
 .btn-container {
   display: flex;
-  gap: 50px;
+  gap: 60px;
 }

@@ -1,13 +1,17 @@
 const hourHand = document.querySelector('.hour-hand');
+const minuteHand = document.querySelector('.minute-hand');
+const secondsHand = document.querySelector('.seconds-hand');
+
 const clockBtn = document.querySelector('.clock-btn');
 const colorBtn = document.querySelector('.color-btn');
+
+const clockOuter = document.querySelector('.clock-outer');
+const radius = clockOuter.offsetWidth / 2;
+const rotation = 360/60;
 
 let stopped = false;
 
 function makeClock() {
-  const clockOuter = document.querySelector('.clock-outer');
-  const radius = clockOuter.offsetWidth / 2;
-
   for(let i = 1; i <= 60; i++) {
     const item = document.createElement('div');
     item.classList.add('item');
@@ -25,8 +29,6 @@ function makeClock() {
 
       clockOuter.appendChild(item);
 
-      const rotation = 360/60;
-
       item.style.transform = `rotate(${i*rotation}deg) translate(${radius-40}px) rotate(90deg)`;
       number.style.transform = `rotate(${-(i*rotation)}deg)`;
 
@@ -37,8 +39,6 @@ function makeClock() {
       item.appendChild(line);
       clockOuter.appendChild(item);
 
-      const rotation = 360/60;
-
       item.style.transform = `rotate(${i*rotation}deg) translate(${radius-15}px) rotate(90deg)`;
     }
   }
@@ -46,18 +46,42 @@ function makeClock() {
 
 makeClock();
 
-// function updateClock(hour) {
-//   hourHand.classList.remove(hourHand.classList.item(1));
-//   const addClass = 'hour-' + ((hour > 12) ? (hour - 12).toString() : hour.toString());
-//   hourHand.classList.add(addClass);
+function initializeClock(dateObj) {
+  const hour = dateObj.getHours();
+  const minute = dateObj.getMinutes();
+  const seconds = dateObj.getSeconds();
+
+  secondsHand.style.transform = `rotate(${(seconds-15)*rotation}deg)`;
+  minuteHand.style.transform = `rotate(${(minute-15)*rotation}deg)`;
+  hourHand.style.transform = `rotate(${(hour-10)*rotation}deg) rotate(${(minute-15)*0.5}deg)`; // there is a problem with hour calculation
+}
+
+// function updateClock(hand, incrementValue) {
+//   let rotationValue = hand
+//                       .getAttribute('style')
+//                       .split(' ')[1]
+//                       .split('(')[1]
+//                       .split('d')[0];
+//   if (rotationValue == 360) {
+//     rotationValue = 0;
+//   }
+//   hand.style.transform = `rotate(${Number(rotationValue) + incrementValue}deg)`;
 // }
 
-// updateClock(new Date().getHours());
+initializeClock(new Date());
 
-// let intervalId = setInterval(() => {
-//   console.log('1 Hour Passed. Updating Clock');
-//   updateClock(new Date().getHours());
-// }, 3600000);
+setInterval(() => {
+  initializeClock(new Date());
+}, 1000);
+
+// setInterval(() => {
+//   updateClock(minuteHand, 6);
+//   let hourRotationValue = hourHand
+//                       .getAttribute('style')
+//                       .split(' ')[2]
+//                       .split('(')[1]
+//                       .split('d')[0];
+// }, 60000);
 
 // clockBtn.addEventListener('click', () => {
 //   if(!stopped) {
