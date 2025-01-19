@@ -71,11 +71,44 @@ function makeAnalogClock() {
 
 makeAnalogClock();
 
+function makeDigitalClock() {
+  const hour = document.querySelector('.hour');
+  const minute = document.querySelector('.minute');
+
+  function makeDigits(timeUnit) {
+    for (let i = 0; i < timeUnit.children.length; i++) {
+      for (let j = 0; j < timeUnit.children[i].children.length; j++) {
+        const digitPosition = timeUnit.children[i].children[j];
+        const radius = digitPosition.offsetWidth / 2;
+        for(let k = 1; k <= 4; k++) {
+          if ((digitPosition.classList.item(0) === 'bottom') && (k === 3)) {
+            continue
+          }
+          const digitLine = document.createElement('span');
+          digitLine.classList.add('digit-line');
+      
+          digitPosition.appendChild(digitLine);
+      
+          const rotation = 360/4;
+      
+          const value = `rotate(${k*rotation}deg) translate(${radius-60}px) rotate(90deg)`;
+          digitLine.style.transform = value;
+        }
+      }
+    }
+  }
+  makeDigits(hour);
+  makeDigits(minute);
+}
+
 changeClockBtn.addEventListener('click', () => {
   clockOuter.textContent = '';
   if (clockOuter.classList.item(1) === 'analog') {
     clockOuter.classList.remove('analog');
+    clockOuter.classList.add('digital');
+    makeDigitalClock();
   } else {
+    clockOuter.classList.remove('digital');
     clockOuter.classList.add('analog');
     makeAnalogClock();
   }

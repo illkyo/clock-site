@@ -7,6 +7,10 @@ h1 {
   margin: 0;
 }
 
+body {
+  background-color: rgb(211, 204, 192);
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -27,6 +31,99 @@ h1 {
   border: 6px var(--black) solid;
   border-radius: 50%;
   transform: rotate(-90deg);
+  background-color: lightyellow;
+}
+
+.digital {
+  padding: 50px;
+  height: 230px;
+  width: 950px;
+  border: 10px rgb(215, 216, 218) outset;
+  background-color: rgb(12, 30, 40);
+  box-shadow: 1px 3px 9px 3px rgb(171, 158, 139);
+}
+
+.digits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.digits * {
+  box-sizing: border-box;
+}
+
+.hour {
+  display: flex;
+  height: 100%;
+  width: 500px;
+  /* border: 10px yellow solid; */
+}
+
+.minute {
+  display: flex;
+  height: 100%;
+  width: 500px;
+  /* border: 10px lime solid; */
+}
+
+.one {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  /* border: 10px salmon solid; */
+}
+
+.two {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  /* border: 10px slateblue solid; */
+}
+
+.top {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+  /* border: 10px green solid; */
+}
+
+.bottom {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+  /* border: 10px lightseagreen solid; */
+}
+
+.digit-line {
+  position: absolute;
+  width: 100px;
+  height: 20px;
+  background-color: blue;
+  border-radius: 20px;
+}
+
+.dots {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  background: rgba(182, 200, 3, 1);
+  border-radius: 50%;
 }
 
 .item {
