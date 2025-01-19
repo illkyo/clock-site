@@ -53,20 +53,9 @@ function initializeClock(dateObj) {
 
   secondsHand.style.transform = `rotate(${(seconds-15)*rotation}deg)`;
   minuteHand.style.transform = `rotate(${(minute-15)*rotation}deg)`;
-  hourHand.style.transform = `rotate(${(hour-10)*rotation}deg) rotate(${(minute-15)*0.5}deg)`; // there is a problem with hour calculation
+  const hourRotationValue = ((hour-15)*(rotation+24)) + ((minute)*0.5);
+  hourHand.style.transform = `rotate(${hourRotationValue}deg)`;
 }
-
-// function updateClock(hand, incrementValue) {
-//   let rotationValue = hand
-//                       .getAttribute('style')
-//                       .split(' ')[1]
-//                       .split('(')[1]
-//                       .split('d')[0];
-//   if (rotationValue == 360) {
-//     rotationValue = 0;
-//   }
-//   hand.style.transform = `rotate(${Number(rotationValue) + incrementValue}deg)`;
-// }
 
 initializeClock(new Date());
 
@@ -75,12 +64,11 @@ setInterval(() => {
 }, 1000);
 
 // setInterval(() => {
-//   updateClock(minuteHand, 6);
-//   let hourRotationValue = hourHand
-//                       .getAttribute('style')
-//                       .split(' ')[2]
-//                       .split('(')[1]
-//                       .split('d')[0];
+//   let hourRotationValue = hourHand.getAttribute('style').split(' ')[1].split('d')[0].split('(')[1];
+//   if (Number(hourRotationValue) >= 360) {
+//     hourRotationValue = 0;
+//   }
+//   hourHand.style.transform = `rotate(${Number(hourRotationValue)+0.5}deg)`;
 // }, 60000);
 
 // clockBtn.addEventListener('click', () => {

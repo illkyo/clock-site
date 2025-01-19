@@ -52,7 +52,7 @@ h1 {
 .seconds-hand {
   position: absolute;
   transform-origin: top center;
-  /* transition: all 1s; */
+  transition: transform 1s;
   top: 50%;
   left: 50%;
   height: 200px;
