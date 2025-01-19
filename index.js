@@ -2,14 +2,9 @@ const hourHand = document.querySelector('.hour-hand');
 const minuteHand = document.querySelector('.minute-hand');
 const secondsHand = document.querySelector('.seconds-hand');
 
-const clockBtn = document.querySelector('.clock-btn');
-const colorBtn = document.querySelector('.color-btn');
-
 const clockOuter = document.querySelector('.clock-outer');
 const radius = clockOuter.offsetWidth / 2;
 const rotation = 360/60;
-
-let stopped = false;
 
 function makeClock() {
   for(let i = 1; i <= 60; i++) {
@@ -62,23 +57,3 @@ initializeClock(new Date());
 setInterval(() => {
   initializeClock(new Date());
 }, 1000);
-
-// setInterval(() => {
-//   let hourRotationValue = hourHand.getAttribute('style').split(' ')[1].split('d')[0].split('(')[1];
-//   if (Number(hourRotationValue) >= 360) {
-//     hourRotationValue = 0;
-//   }
-//   hourHand.style.transform = `rotate(${Number(hourRotationValue)+0.5}deg)`;
-// }, 60000);
-
-// clockBtn.addEventListener('click', () => {
-//   if(!stopped) {
-//     stopped = true;
-//     clearInterval(intervalId);    
-//   } else {
-//     updateClock(new Date().getHours());
-//     setInterval(() => {
-//       updateClock(new Date().getHours());
-//     }, 3600000);
-//   }
-// });

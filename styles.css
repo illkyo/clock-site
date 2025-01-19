@@ -68,10 +68,5 @@ h1 {
 .seconds-hand {
   height: 260px;
   width: 2px;
-  background-color: orangered;
-}
-
-.btn-container {
-  display: flex;
-  gap: 60px;
+  background-color: red;
 }
