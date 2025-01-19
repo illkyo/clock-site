@@ -1,2 +1,2 @@
 # analog-clock-site
-Displays current time on an analog clock
+Displays current time on a clock
