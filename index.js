@@ -1,12 +1,24 @@
-const hourHand = document.querySelector('.hour-hand');
-const minuteHand = document.querySelector('.minute-hand');
-const secondsHand = document.querySelector('.seconds-hand');
+const changeClockBtn = document.querySelector('.change-clock');
 
 const clockOuter = document.querySelector('.clock-outer');
-const radius = clockOuter.offsetWidth / 2;
-const rotation = 360/60;
 
-function makeClock() {
+function makeAnalogClock() {
+  const hourHand = document.createElement('div');
+  hourHand.classList.add('hour-hand');
+
+  const minuteHand = document.createElement('div');
+  minuteHand.classList.add('minute-hand');
+
+  const secondsHand = document.createElement('div');
+  secondsHand.classList.add('seconds-hand');
+
+  clockOuter.appendChild(hourHand);
+  clockOuter.appendChild(minuteHand);
+  clockOuter.appendChild(secondsHand);
+
+  const radius = clockOuter.offsetWidth / 2;
+  const rotation = 360/60;
+
   for(let i = 1; i <= 60; i++) {
     const item = document.createElement('div');
     item.classList.add('item');
@@ -37,23 +49,34 @@ function makeClock() {
       item.style.transform = `rotate(${i*rotation}deg) translate(${radius-15}px) rotate(90deg)`;
     }
   }
-}
 
-makeClock();
-
-function initializeClock(dateObj) {
-  const hour = dateObj.getHours();
-  const minute = dateObj.getMinutes();
-  const seconds = dateObj.getSeconds();
-
-  secondsHand.style.transform = `rotate(${(seconds-15)*rotation}deg)`;
-  minuteHand.style.transform = `rotate(${(minute-15)*rotation}deg)`;
-  const hourRotationValue = ((hour-15)*(rotation+24)) + ((minute)*0.5);
-  hourHand.style.transform = `rotate(${hourRotationValue}deg)`;
-}
-
-initializeClock(new Date());
-
-setInterval(() => {
+  function initializeClock(dateObj) {
+    const hour = dateObj.getHours();
+    const minute = dateObj.getMinutes();
+    const seconds = dateObj.getSeconds();
+  
+    secondsHand.style.transform = `rotate(${(seconds-15)*rotation}deg)`;
+    minuteHand.style.transform = `rotate(${(minute-15)*rotation}deg)`;
+    const hourRotationValue = ((hour-15)*(rotation+24)) + ((minute)*0.5);
+    hourHand.style.transform = `rotate(${hourRotationValue}deg)`;
+  }
+  
   initializeClock(new Date());
-}, 1000);
+  
+  setInterval(() => {
+    initializeClock(new Date());
+  }, 1000);
+  
+}
+
+makeAnalogClock();
+
+changeClockBtn.addEventListener('click', () => {
+  clockOuter.textContent = '';
+  if (clockOuter.classList.item(1) === 'analog') {
+    clockOuter.classList.remove('analog');
+  } else {
+    clockOuter.classList.add('analog');
+    makeAnalogClock();
+  }
+})
