@@ -72,9 +72,54 @@ function makeAnalogClock() {
 makeAnalogClock();
 
 function makeDigitalClock() {
-  const hour = document.querySelector('.hour');
-  const minute = document.querySelector('.minute');
 
+  function createDesign() {
+    const digitsContainer = document.createElement('div')
+    digitsContainer.classList.add('digits');
+
+    let itemsList = ['hour', 'dots', 'minute'];
+
+    for (let i = 0; i < itemsList.length; i++) {
+      const itemContainer = document.createElement('div');
+      itemContainer.classList.add(itemsList[i]);
+
+      if (i === 1) {
+        for (let i = 0; i < 2; i++) {
+          const dot = document.createElement('div');
+          dot.classList.add('dot');
+
+          itemContainer.appendChild(dot);
+        }
+      } else {
+        const one = document.createElement('div');
+        one.classList.add('one');
+        const two = document.createElement('div');
+        two.classList.add('two');
+  
+        let digits = [one, two];
+  
+        for (let i = 0; i < digits.length; i++) {
+          const top = document.createElement('div');
+          top.classList.add('top');
+          const bottom = document.createElement('div');
+          bottom.classList.add('bottom');
+  
+          digits[i].appendChild(top);
+          digits[i].appendChild(bottom);
+        }
+  
+        itemContainer.appendChild(one);
+        itemContainer.appendChild(two);
+      }
+
+      digitsContainer.appendChild(itemContainer);
+    }
+
+    clockOuter.appendChild(digitsContainer);
+  }
+
+  createDesign();
+  
   function makeDigits(timeUnit) {
     for (let i = 0; i < timeUnit.children.length; i++) {
       for (let j = 0; j < timeUnit.children[i].children.length; j++) {
@@ -97,6 +142,10 @@ function makeDigitalClock() {
       }
     }
   }
+
+  const hour = document.querySelector('.hour');
+  const minute = document.querySelector('.minute');
+
   makeDigits(hour);
   makeDigits(minute);
 }
